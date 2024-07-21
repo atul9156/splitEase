@@ -1,0 +1,454 @@
+{
+	"info": {
+		"_postman_id": "e48bdeb5-f96d-45e1-bf92-b90766a53e74",
+		"name": "SplitEase API Collection",
+		"description": "Collection of SplitEase API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32698412"
+	},
+	"item": [
+		{
+			"name": "Create Group",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sample 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/groups/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Group",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"description": "This user must be part of the group for the API to run successfully",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/groups/3/delete_group/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"3",
+						"delete_group",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Member",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"isla@example.com\"}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/groups/1/add_member/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"1",
+						"add_member",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Member",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"user2@example.com\"}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/groups/1/remove_member/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"1",
+						"remove_member",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Members",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/groups/1/list_members/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"1",
+						"list_members",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Transaction",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Museum Ticket\",\n    \"amount\": 200,\n    \"paid_by\": {\n        \"users\": [\"harry@example.com\"],\n        \"share\": [100],\n        \"type\": \"percentage\"\n    },\n    \"shared_by\": {\n        \"users\": [\"harry@example.com\", \"isla@example.com\", \"jack@example.com\", \"kate@example.com\", \"lily@example.com\"],\n        \"share\": [20, 20, 20, 20, 20],\n        \"type\": \"percentage\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/groups/1/add_transaction/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"1",
+						"add_transaction",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Transactions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/groups/1/list_transactions/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"1",
+						"list_transactions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Transaction",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"transaction_id\": 3,\n    \"name\": \"Museum Ticket\",\n    \"amount\": 200,\n    \"paid_by\": {\n        \"users\": [\"harry@example.com\"],\n        \"share\": [100],\n        \"type\": \"percentage\"\n    },\n    \"shared_by\": {\n        \"users\": [\"harry@example.com\", \"isla@example.com\", \"jack@example.com\", \"kate@example.com\", \"lily@example.com\"],\n        \"share\": [20, 20, 20, 30, 10],\n        \"type\": \"percentage\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/groups/1/update_transaction/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"1",
+						"update_transaction",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Transaction",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"transaction_id\": 3}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/groups/1/delete_transaction/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"1",
+						"delete_transaction",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Balances",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/groups/1/list_balances",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"1",
+						"list_balances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Settlement",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Email",
+						"value": "harry@example.com",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/groups/1/calculate_settlement/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"groups",
+						"1",
+						"calculate_settlement",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Harry\",\n  \"email\": \"harry@example.com\"\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "List user groups",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Email",
+						"value": "harry@example.com"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/user_groups/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"user_groups",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8000"
+		}
+	]
+}
